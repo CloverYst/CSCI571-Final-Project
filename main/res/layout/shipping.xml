@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:text="Shipping Information"
+        android:textColor="@color/colorPrimaryDark"
+        />
+    <TextView
+        android:id="@+id/HT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="•Handling Time:"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="15dp"/>
+    <TextView
+        android:id="@+id/ODSA"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="•One Day Shipping Available:"
+        android:layout_marginLeft="15dp"
+        android:layout_marginBottom="15dp" />
+    <TextView
+        android:id="@+id/ST"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="•Shipping Type:"
+        android:layout_marginLeft="15dp"
+        android:layout_marginBottom="15dp" />
+    <TextView
+        android:id="@+id/SF"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="•Shipping From:"
+        android:layout_marginLeft="15dp"
+        android:layout_marginBottom="15dp" />
+    <TextView
+        android:id="@+id/STL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="•Ship To Locations:"
+        android:layout_marginLeft="15dp"
+        android:layout_marginBottom="15dp" />
+    <TextView
+        android:id="@+id/ES"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="•Expeditied Shipping:"
+        android:layout_marginLeft="15dp"
+        android:layout_marginBottom="15dp" />
+</LinearLayout>
+</ScrollView>
