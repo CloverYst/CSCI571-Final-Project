@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"> 
+	<title>eBay-HomePage</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+  <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+  <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<style>
+  .btn-s{
+    background-color:midnightblue;
+    color: white;
+  }
+  .btn-c{
+    background-color:slategray;
+    color: white;
+    width: 90px;
+  }
+  .pagination {
+  display: inline-block;
+}
+
+.pagination a {
+  color: black;
+  float: left;
+  padding: 4px 8px;
+  text-decoration: none;
+}
+.boder
+{
+  background-color: darkgray;
+  margin-bottom: 10px;
+}
+</style>
+</head>
+<body>
+  <div class="text-center">
+    <img src="https://www.csci571.com/hw/hw6/images/eBayLogo.png"  >
+</div>
+
+<div class="container center-block">
+<div class="form-horizontal " role="form" >
+
+   <div class="form-group">
+     <div class="row">
+        <div class="col-12 font-weight-bold col-lg-2 ">
+          <label class="control-label ">Key words<span style="color: red;">*</span></label>
+        </div>
+        <div class="col-lg-8 col-12">
+          <input type="text" class="form-control" id="kw" placeholder="Enter keywords" >
+        </div>
+     </div>
+   </div>
+
+   <div class="form-group">
+     <div class="row">
+        <div class="col-12 font-weight-bold col-lg-2">
+         <label class="control-label">Price range  </label>
+        </div>
+         <div class="col-lg-4 col-6">
+              <input type="text" class="form-control" id="lp" placeholder="Min Price">
+         </div>
+         <div class="col-lg-4 col-6">
+              <input type="text" class="form-control" id="hp" placeholder="Max Price">
+         </div>
+     </div>
+   </div>
+
+  <div class="form-group">
+     <div class="row">
+      <div class="col-12 font-weight-bold col-lg-2">
+        <label class="control-label">Condition</label>
+      </div>
+      <div class="col-lg-6 col-12">
+        <div class="checkbox ">
+          <label>
+            <input type="checkbox">New
+          </label>
+          <label>
+            <input type="checkbox">Used
+          </label>
+          <label>
+             <input type="checkbox">Very Good
+          </label>
+          <label>
+            <input type="checkbox">Good
+          </label>
+          <label>
+            <input type="checkbox">Acceptable
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+   <div class="form-group">
+     <div class="row">
+      <div class="col-12 font-weight-bold col-lg-2">
+        <label class="control-label">Seller</label>
+      </div>
+       <div class="col-10">
+           <div class="checkbox">
+                <label><input type="checkbox"> Return Accepted</label> 
+           </div>
+       </div>
+     </div>
+   </div>
+
+   <div class="form-group">
+     <div class="row">
+      <div class="col-12 font-weight-bold col-lg-2">
+       <label class="control-label">Shipping</label>
+      </div>
+       <div class="col-10">
+           <div class="checkbox">
+               <label>
+                 <input type="checkbox"> Free
+               </label>
+               <label>
+                   <input type="checkbox"> Expedited
+               </label>
+           </div>
+       </div>
+     </div>
+   </div>
+  
+   <div class="form-group">
+     <div class="row">
+      <div class="col-12 font-weight-bold col-lg-2">
+        <label class="control-label">Sort Order</label>
+      </div>
+      <div class="col-12 col-lg-8">
+          <select class="form-control" style="min-width: 100px;">
+            <option>Best Match</option>
+            <option>Price: highest first</option>
+            <option>Price + Shipping: highest first</option>
+            <option>Price + Shipping: lowest first</option>
+          </select>
+       </div>
+     </div>
+   </div>
+
+   <div class="form-group">
+     <div class="row">
+     <div class="col-9 col-sm col-md-8 col-lg-9">
+       <button type="submit" class="btn btn-s" style="float: right;"><i class="fas fa-search"></i>Search</button>
+     </div>
+     <div class="col-3 col-sm col-md-8 col-lg-1">
+       <button type="submit" class="btn btn-c" style="float: right;"><i class="fas fa-bars"></i>Clear</button>
+     </div>
+   </div>
+   </div>
+</div>
+</div>
+
+<hr>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-7 col-12">
+      <h1 id="h1">Result for </h1>
+    </div>
+    <div class="pagination col-lg-5 col-12">
+     <a href="#">&laquo; Previous</a>
+      <a href="#">1</a>
+      <a href="#">2</a>
+      <a href="#">3</a>
+      <a href="#">4</a>
+      <a href="#">5</a>
+      <a href="#">6</a>
+      <a href="#">7</a>
+      <a href="#">8</a>
+      <a href="#">Next &raquo;</a>
+    </div>
+</div>
+</div>
+
+<div class="container boder">
+  <div class="row">
+    <div class="col-lg-4 col-12 text-center">
+      <img src="https://csci571.com/hw/hw8/images/ebayDefault.png" class = "center-block">
+    </div>
+    <div class="col-lg-8 col-12">
+      <div><a herf="">proudt link</a></div>
+      <div><b>Price:</b></div>
+      <div class="row">
+        <div class="col-lg-1 col-2"><i>Address</i></div>
+      <div class="col-lg-3 col-5">
+        <button class="btn-default" name="sm" onclick="SM()">Show Details</button><button id="sl" onclick="SL()">Hide Details</button>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.getElementById('sl').style.display="none";
+ function SM()
+ {
+  sm.style.display='none';
+  sl.style.display='block';
+
+ }
+ function SL()
+ {
+  sl.style.display='none'; 
+  sm.style.display='block';
+
+ }
+</script>
+</body>
+</html>

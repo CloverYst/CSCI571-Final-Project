@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+   <link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet"/>
+   <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<title>Search Page</title>
+
+<style>
+  .p1{text-align: center;font-size:xx-large ;}
+  table{margin:auto;border-collapse: collapse;}
+  table tr td{border:1px solid black;text-align: center;padding:5px;margin: auto;}
+  span{color: brown;}
+  .p1{padding:0;margin:0;text-align: center;font-size:20px;font-family:Newton Bold;color:black;}
+  .hr{border-color:rgba(99, 94, 94, 0.664);}
+  .up-arrow {
+    display: hide;
+    position: absolute;
+    border: 1px solid #777777;
+    text-decoration: none;
+    border-radius: 2px;
+    width:200px;
+    height:25px;
+    text-align: center;
+    margin-left:200px;
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+.up-arrow:before {
+    content: '';
+    display: block;  
+    position: absolute;
+    left: 1px;
+    bottom: 100%;
+    width: 0;
+    height: 0;
+    border: 10px solid transparent;
+    border-bottom-color: black;
+}
+
+.up-arrow:after {
+    content: '';
+    display: block;  
+    position: absolute;
+    left: 2px;
+    bottom: 100%;
+    width: 0;
+    height: 0;
+    border: 9px solid transparent;
+    border-bottom-color: white;
+}
+
+.out{
+    display: flex;
+    width: 790px;
+    background-color: white;
+    margin: 0 auto;
+    border:1px solid black;
+    margin-bottom: 10px;
+}
+.left{
+    height: 200px;
+    width: 200px;
+    margin: 0 auto;
+    background-color: white;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+    transition: transform .2s;
+
+}
+.left img:hover{
+    transform: scale(1.5);
+			}  
+.right{
+    width: 580px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+.title{
+    height: 50px;
+    width: 580px;
+    line-height: 50px;
+    margin: auto;
+    background-color: white;
+}
+.line{
+    width: 580px;
+    display: flex;
+    margin: auto;
+    background-color: white;
+}
+.text_box{
+    height: 40px;
+    line-height: 40px;
+    margin: auto 0 auto 0;
+}
+.img_box{
+    width: 35px;
+    height: 50px;
+}
+.img1{
+    width: 12px;
+    height: 10px;
+}
+.img2{
+    width: 30px;
+    height: 35px;
+}
+.price{
+    height: 40px;
+    width: 580px;
+    margin: auto;
+    line-height: 40px;
+    background-color: white;
+    font-weight: 650;
+} 
+.bt{
+    
+    background-color: transparent;
+    font-size: x-large;
+    color:red;
+}
+.s2{
+    color:black;
+    font-weight: 700;
+}
+.dnf{
+    margin:0 atuo;
+    font-weight:800;
+    text-align: center;
+    font-size: xx-large ;
+}
+</style>
+</head>
+ 
+<body>
+   
+    <table > 
+       <caption><p class="p1"><a href="https://www.ebay.com" target="_blank">
+         <img src="https://www.csci571.com/hw/hw6/images/eBayLogo.png" width="160px" height="70px"></a>
+        <span style="font-size:xx-large;color:black;font-family:Begum Bold;" >Shopping</span>
+        </p></caption>
+       <tr><td><form>Key &nbsp; Words<span>*</span>:
+        
+         <input type="text" id="kw">
+         <div id="up-arrow" class="up-arrow"><img src="https://shutangy.freevar.com/kw.png" style="width: 15px;height: 15px;"/>&nbsp;Please fill out this field.</div>
+      </form></td></tr>
+       <tr><td><form>Price &nbsp; Range: &nbsp;From<input  type="number" id="from">to<input type="number" id="to"></form></td></tr>
+       <tr><td><form>Condition:<input type="checkbox" name="condition" value="New">New<input type="checkbox" name="condition" value="Used">Used<input type="checkbox" name="condition" value="Very Good">Very Good<input type="checkbox" name="condition" value="Good">Good<input type="checkbox" name="condition" value="Acceptable">Acceptable</form></td></tr>
+       <tr><td><form>Seller:<input type="checkbox" name="seller" value="returnn">Return Accepted</form></td></tr>
+       <tr><td><form>Shipping:<input type="checkbox" name="ship" value="free">Free<input type="checkbox" name="ship" value="Expedited">Expedited</form></td></tr>
+       <tr><td><form>Sort by:<select id="sort"><option value="Best Match">Best Match</option><option value="Price:Higest">Price:Higest</option><option value="Price + Shipping: highest first">Price + Shipping: highest first</option><option value="Price + Shipping: lowest first">Price + Shipping: lowest first</option></select></form></td></tr>
+       <tr><td><form><button onclick="myF2()">Clear</button>&nbsp;<button type="button" onclick="myF1()">Search</button></form></td></tr>
+    </table>
+    <br>
+    <p class="p1" id="h1"> Rsults found for </p>
+    <hr class="hr" id="hr" width="790px" size="30px">
+    <script>
+   $('#h1').hide();
+   $('#hr').hide();  
+   $('#d1').hide();  
+   $('#up-arrow').hide(); 
+   function myF1(){
+      if(!$('#kw').val())
+     {
+     $("#kw")[0].focus();
+     $('#up-arrow').show();
+     return false;
+    }
+     else {
+      $('#up-arrow').hide(); 
+          }
+      var from=$("#from").val();
+      var to=$("#to").val();
+      
+      if (from == '') 
+         {from = 'none';}
+    else
+        from=Number(from);
+    if (to == '')   
+          {to = 'none';}
+    else
+        to=Number(to);
+      if(from<0||to<0)
+        {
+         alert("Price Range values cannot be negative! Please try a value greater than or equal to 0.0");
+         return false;
+        }
+      if(from >to)  
+        {
+         alert("Oops!Lower price limit cannot be greater than upper price limit!Please try again.");
+         return false;
+         }
+      
+      var checkbox_arr=[];
+      $("input[name='condition']:checked").each(function(){
+         checkbox_arr.push($(this).val());
+      });
+      var seller=[];
+      $("input[name='seller']:checked").each(function(){
+         checkbox_arr.push($(this).val());
+      });
+      var ship=[];
+      $("input[name='ship']:checked").each(function(){
+         checkbox_arr.push($(this).val());
+      });
+      var kw=$('#kw').val()
+      d = {
+                 "keywords": kw,
+                 "lp": from,
+                 "hp":to,
+                 "option":$("#sort").val(),
+                 "condition":checkbox_arr,
+                 "seller":seller,
+                 "ship":ship
+                 }
+      d = {"data":JSON.stringify(d)};
+      //alert(d['data']);
+      $.ajax({
+              type:"GET",
+              url:"https://y-project-571.wl.r.appspot.com/ebay",     
+              dataType:"json",
+              data:d,
+              success:function(data){
+                if(data=="No Result Found")
+               $("body").append("<div class='dnf'>"+data+"</div>");
+               else
+               {
+               $("#h1").prepend(data['totalEntries']);
+               $("#h1").append('<i>'+kw+'</i>');
+               $('#h1').show(); 
+               $('#hr').show();
+               insert_items(data);
+               $("body").append("<button onclick='show_more()' style='display:block;margin:0 auto;' id='sm'>Show More</button>");
+               $("body").append("<button onclick='show_Less()' style='display:block;margin:0 auto;' id='sl'>Show Less</button>");
+               $('#sl').hide();
+               }
+               },
+
+            error:function(jqXHR){
+               alert(jqXHR.readyState);
+               alert("Error: "+jqXHR.status);
+               }
+          });
+   }
+   function myF2(){
+    
+   }
+   function insert_items(data){
+        count = data["count"];
+        for (var i=0; i<10; i++){
+            item = data['items'][i];
+                insert_item(item,i);
+        }
+        $('.out').hide();
+        for (var i = 0; i<3 ; i++){
+            $('.out').eq(i).show();
+        }
+
+    }
+
+    function insert_item(item){
+        var title = item['title'];
+        var category_name = item['category_name'];
+        var img_url = item['img_url'];
+        var item_url = item['item_url'];
+        var conditon = item['conditon'];
+        var top_rating = item['top_rating'];
+        var total_price = item['total_price'];
+        var seller_Return= item['seller_Return'];
+        var FS=item['FS'];
+        var rate=item['top_rating'];
+        var location=item['location'];
+        var ship_fee=item['ship_fee'];
+
+        var $insert = $(
+            "<div class='out' id='out'>" + 
+                "<div class='left'>" +
+                    '<img src="' + img_url + '"style="width:100px;height:140px;border: 1px solid gray;">' + 
+                "</div>" + 
+                "<div class='right' id='right'>" + 
+                    '<a class="title" href="'+item_url+'">' + title +' </a>' + 
+                    "<div class='line'>" + 
+                        "<div class='text_box'>Cateory: <i>" + category_name + "</i></div>" + 
+                        '<a href="'+item_url+'">&nbsp;<img src="https://www.csci571.com/hw/hw6/images/redirect.png" class="img1"></a>' + 
+                    "</div>" + 
+                    "<div class='line'>" + 
+                        "<div class='text_box c' ><span style='color:black;'>Condition: </span><i>" + String(conditon) + "</i>&nbsp;</div>" + 
+                        "<div class='img_box rate' style='display:none;'><img src='https://www.csci571.com/hw/hw6/images/topRatedImage.png' class='img2'></div>" + 
+                    "</div>" + 
+                    '<div class="line sr" style="display:none;" ><p>'+seller_Return +'</p></div>'+
+                    '<div class="line fs" style="display:none;" ><p>'+FS +'</p></div>'+
+                    "<div class='price' >Price: $" + 
+                        total_price + ' <span class="s2"></span><i style="font-weight:400;display:none;" class="ad"> from '+location+'</i>'+
+                    " </div>" + 
+                "</div>" + 
+                "<div><button class='bt' onclick='bt()'>X</div>" + 
+            "</div>"
+        );
+    
+        $("body").append($insert);
+        if(rate)
+              { $(".rate").last().show();}
+        if(ship_fee>0)
+          {
+              
+              $('.s2').last().append("(+ $"+ship_fee+" for shipping )");
+          }
+        $(".bt").hide();
+        $('.c').each(function(i, e){
+            $(e).mouseover(function(){
+                $(".sr").eq(i).show();
+                $(".fs").eq(i).show();
+                $(".ad").eq(i).show();
+                $(".bt").eq(i).show();
+            });
+         });
+         
+    }
+
+    function show_more(){
+        
+        $("#sl").show();
+        $(".out").show();
+        $("#sm").hide();
+    }
+    function show_Less(){
+        $(".out").hide();
+        $("#sm").show();
+        $("#sl").hide();
+        for (var i = 0; i<3 ; i++){
+            $('.out').eq(i).show();
+        }
+    }
+    function bt(){
+            $(".sr").hide();
+            $(".fs").hide();
+            $(".ad").hide();
+            $(".bt").hide();
+        }
+    </script>
+</body>
+ 
+</html>
